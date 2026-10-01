@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "PhishGuard",
+  "version": "1.0.0",
+  "description": "Real-time phishing detection and website security analysis.",
+  "permissions": [
+    "storage",
+    "webNavigation",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_title": "PhishGuard",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "data/trusted-brands.js",
+        "content/domain-analyzer.js",
+        "content/redirect-analyzer.js",
+        "content/form-analyzer.js",
+        "content/page-analyzer.js",
+        "content/risk-engine.js",
+        "content/warning-ui.js",
+        "content/scanner.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        PhishGuard Settings
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            padding: 40px;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            background: #f3f4f6;
+
+            color: #111827;
+        }
+
+
+        .container {
+
+            max-width: 700px;
+
+            margin: 0 auto;
+        }
+
+
+        .header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 24px;
+        }
+
+
+        .logo {
+
+            width: 50px;
+
+            height: 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #111827;
+
+            color: white;
+
+            border-radius: 12px;
+
+            font-size: 26px;
+        }
+
+
+        h1 {
+
+            margin: 0;
+
+            font-size: 28px;
+        }
+
+
+        .subtitle {
+
+            margin-top: 4px;
+
+            color: #6b7280;
+
+            font-size: 14px;
+        }
+
+
+        .card {
+
+            background: white;
+
+            padding: 24px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 4px 14px
+                rgba(0, 0, 0, 0.08);
+
+            margin-bottom: 18px;
+        }
+
+
+        .card h2 {
+
+            margin-top: 0;
+
+            font-size: 18px;
+        }
+
+
+        .setting {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 12px;
+
+            padding: 16px 0;
+
+            border-bottom:
+                1px solid #e5e7eb;
+        }
+
+
+        .setting:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .setting input {
+
+            width: 18px;
+
+            height: 18px;
+
+            margin-top: 2px;
+        }
+
+
+        .setting-content {
+
+            flex: 1;
+        }
+
+
+        .setting-title {
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+
+        .setting-description {
+
+            margin-top: 4px;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            color: #6b7280;
+        }
+
+
+        button {
+
+            padding: 11px 18px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #111827;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        button:hover {
+
+            background: #1f2937;
+        }
+
+
+        #status {
+
+            display: inline-block;
+
+            margin-left: 12px;
+
+            font-size: 13px;
+
+            color: #15803d;
+        }
+
+
+        .info {
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            color: #4b5563;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+
+        <!-- Header -->
+
+        <div class="header">
+
+            <div class="logo">
+                🛡️
+            </div>
+
+
+            <div>
+
+                <h1>
+                    PhishGuard
+                </h1>
+
+                <div class="subtitle">
+                    Extension Settings
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Detection settings -->
+
+        <div class="card">
+
+            <h2>
+                Detection Settings
+            </h2>
+
+
+            <div class="setting">
+
+                <input
+                    type="checkbox"
+                    id="enable-warning"
+                >
+
+
+                <div class="setting-content">
+
+                    <div class="setting-title">
+
+                        Show HIGH and CRITICAL warnings
+
+                    </div>
+
+
+                    <div class="setting-description">
+
+                        Display an in-page warning when
+                        PhishGuard detects a high-risk or
+                        critical webpage.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="setting">
+
+                <input
+                    type="checkbox"
+                    id="enable-page-analysis"
+                >
+
+
+                <div class="setting-content">
+
+                    <div class="setting-title">
+
+                        Enable suspicious-content analysis
+
+                    </div>
+
+
+                    <div class="setting-description">
+
+                        Analyze webpage text for suspicious
+                        phishing-related language.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="setting">
+
+                <input
+                    type="checkbox"
+                    id="enable-form-analysis"
+                >
+
+
+                <div class="setting-content">
+
+                    <div class="setting-title">
+
+                        Enable credential-form analysis
+
+                    </div>
+
+
+                    <div class="setting-description">
+
+                        Analyze password forms and detect
+                        insecure or cross-origin submissions.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Information -->
+
+        <div class="card">
+
+            <h2>
+                About PhishGuard
+            </h2>
+
+
+            <div class="info">
+
+                PhishGuard analyzes URLs, domains,
+                redirects, credential forms, and webpage
+                content to calculate a phishing risk score.
+
+                <br><br>
+
+                Risk levels:
+
+                <br>
+
+                LOW — minimal indicators
+
+                <br>
+
+                SUSPICIOUS — some suspicious indicators
+
+                <br>
+
+                HIGH — significant indicators
+
+                <br>
+
+                CRITICAL — severe indicators
+
+            </div>
+
+        </div>
+
+
+        <!-- Save -->
+
+        <div>
+
+            <button id="save-button">
+                Save Settings
+            </button>
+
+
+            <span id="status"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="options.js"></script>
+
+</body>
+
+</html>

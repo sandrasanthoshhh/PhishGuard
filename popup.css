@@ -1,0 +1,338 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    width: 380px;
+
+    min-height: 500px;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    background: #f3f4f6;
+
+    color: #111827;
+}
+
+
+.container {
+
+    padding: 14px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+
+.logo {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #111827;
+
+    color: white;
+
+    border-radius: 10px;
+
+    font-size: 22px;
+}
+
+
+.header h1 {
+
+    margin: 0;
+
+    font-size: 21px;
+}
+
+
+.header p {
+
+    margin: 3px 0 0;
+
+    font-size: 12px;
+
+    color: #6b7280;
+}
+
+
+/* =========================
+   SCAN STATUS
+   ========================= */
+
+.scan-status {
+
+    padding: 8px 10px;
+
+    margin-bottom: 12px;
+
+    border-radius: 7px;
+
+    background: #e5e7eb;
+
+    color: #374151;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   RISK CARD
+   ========================= */
+
+.risk-card {
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    text-align: center;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+
+.risk-level {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    margin-bottom: 4px;
+}
+
+
+.risk-score {
+
+    font-size: 18px;
+
+    color: #4b5563;
+}
+
+
+/* =========================
+   RISK COLORS
+   ========================= */
+
+.risk-low {
+
+    color: #15803d;
+}
+
+
+.risk-suspicious {
+
+    color: #ca8a04;
+}
+
+
+.risk-high {
+
+    color: #ea580c;
+}
+
+
+.risk-critical {
+
+    color: #dc2626;
+}
+
+
+/* =========================
+   SECTIONS
+   ========================= */
+
+.section {
+
+    background: #ffffff;
+
+    padding: 12px;
+
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+
+.section h2 {
+
+    margin: 0 0 10px;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   URL
+   ========================= */
+
+.current-url {
+
+    font-size: 12px;
+
+    color: #4b5563;
+
+    word-break: break-all;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   REASONS
+   ========================= */
+
+.risk-reasons {
+
+    margin: 0;
+
+    padding-left: 20px;
+}
+
+
+.risk-reasons li {
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   ACTIONS
+   ========================= */
+
+.actions {
+
+    margin-top: 14px;
+}
+
+
+.rescan-button {
+
+    width: 100%;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #111827;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.rescan-button:hover {
+
+    background: #1f2937;
+}
+
+
+.rescan-button:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+
+    margin-top: 14px;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    color: #9ca3af;
+}
+.statistics {
+
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.stat {
+
+    flex: 1;
+
+    padding: 10px;
+
+    background: #f9fafb;
+
+    border-radius: 8px;
+
+    text-align: center;
+}
+
+
+.stat-number {
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    color: #6b7280;
+}

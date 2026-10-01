@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Account Security Verification</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(99, 102, 241, 0.35),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(168, 85, 247, 0.3),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #172554,
+                    #1e1b4b
+                );
+
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.35;
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .orb-one {
+            width: 280px;
+            height: 280px;
+            background: #6366f1;
+            top: -80px;
+            left: -70px;
+        }
+
+        .orb-two {
+            width: 240px;
+            height: 240px;
+            background: #a855f7;
+            right: -60px;
+            top: 35%;
+            animation-delay: 2s;
+        }
+
+        .orb-three {
+            width: 200px;
+            height: 200px;
+            background: #06b6d4;
+            bottom: -70px;
+            left: 35%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px, -25px) scale(1.08);
+            }
+        }
+
+        /* Main layout */
+
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px 20px;
+        }
+
+        .security-card {
+            width: min(920px, 100%);
+
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+
+            background: rgba(15, 23, 42, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            border-radius: 28px;
+
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+            overflow: hidden;
+
+            animation: cardIn 0.8s ease-out;
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Left panel */
+
+        .info-panel {
+            padding: 50px 42px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(99, 102, 241, 0.28),
+                    rgba(30, 41, 59, 0.2)
+                );
+
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 55px;
+        }
+
+        .brand-icon {
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #8b5cf6
+                );
+
+            font-size: 23px;
+
+            box-shadow:
+                0 10px 25px rgba(99, 102, 241, 0.35);
+        }
+
+        .brand-name {
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-name span {
+            color: #a5b4fc;
+            font-weight: 400;
+        }
+
+        .shield {
+            width: 88px;
+            height: 88px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 25px;
+
+            border-radius: 26px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(99, 102, 241, 0.25),
+                    rgba(139, 92, 246, 0.18)
+                );
+
+            border: 1px solid rgba(165, 180, 252, 0.2);
+
+            font-size: 42px;
+
+            animation: pulseShield 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseShield {
+            0%, 100% {
+                box-shadow: 0 0 0 rgba(99, 102, 241, 0);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 35px rgba(99, 102, 241, 0.25);
+            }
+        }
+
+        .info-panel h1 {
+            font-size: clamp(30px, 4vw, 43px);
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+
+            margin-bottom: 18px;
+        }
+
+        .info-panel h1 span {
+            background:
+                linear-gradient(
+                    90deg,
+                    #a5b4fc,
+                    #c4b5fd
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .intro {
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .security-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .check {
+            width: 27px;
+            height: 27px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+
+            color: #86efac;
+            font-size: 13px;
+        }
+
+        /* Right panel */
+
+        .verification-panel {
+            padding: 50px 45px;
+            background: rgba(15, 23, 42, 0.45);
+        }
+
+        .status-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 28px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 8px 13px;
+
+            border-radius: 999px;
+
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+
+            color: #fbbf24;
+            font-size: 12px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #f59e0b;
+
+            box-shadow:
+                0 0 12px rgba(245, 158, 11, 0.8);
+
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.35;
+            }
+        }
+
+        .timer {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .warning-box {
+            position: relative;
+
+            padding: 22px;
+
+            margin-bottom: 28px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(127, 29, 29, 0.35),
+                    rgba(153, 27, 27, 0.15)
+                );
+
+            border: 1px solid rgba(248, 113, 113, 0.2);
+
+            overflow: hidden;
+        }
+
+        .warning-box::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 4px;
+            height: 100%;
+
+            background: #ef4444;
+        }
+
+        .warning-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #fca5a5;
+            font-size: 16px;
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+        .warning-text {
+            color: #fecaca;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .verification-panel h2 {
+            font-size: 25px;
+            letter-spacing: -0.6px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        /* Form */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #cbd5e1;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #64748b;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            padding: 14px 15px 14px 43px;
+
+            border-radius: 12px;
+
+            border: 1px solid rgba(148, 163, 184, 0.18);
+
+            background: rgba(15, 23, 42, 0.65);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 14px;
+
+            transition:
+                border-color 0.25s,
+                box-shadow 0.25s,
+                transform 0.25s;
+        }
+
+        .form-group input::placeholder {
+            color: #64748b;
+        }
+
+        .form-group input:focus {
+            border-color: #818cf8;
+
+            box-shadow:
+                0 0 0 4px rgba(99, 102, 241, 0.12);
+
+            transform: translateY(-1px);
+        }
+
+        .requirements {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+
+            margin: 8px 0 24px;
+        }
+
+        .requirement {
+            padding: 5px 9px;
+
+            border-radius: 6px;
+
+            background: rgba(148, 163, 184, 0.08);
+
+            color: #94a3b8;
+
+            font-size: 11px;
+        }
+
+        .verify-button {
+            width: 100%;
+
+            border: none;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #8b5cf6
+                );
+
+            color: white;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px rgba(99, 102, 241, 0.25);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s,
+                filter 0.2s;
+        }
+
+        .verify-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 16px 35px rgba(99, 102, 241, 0.35);
+
+            filter: brightness(1.08);
+        }
+
+        .verify-button:active {
+            transform: translateY(0);
+        }
+
+        .footer-note {
+            margin-top: 22px;
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .footer-note span {
+            color: #94a3b8;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 760px) {
+            .security-card {
+                grid-template-columns: 1fr;
+            }
+
+            .info-panel {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+                padding: 35px 28px;
+            }
+
+            .verification-panel {
+                padding: 35px 28px;
+            }
+
+            .brand {
+                margin-bottom: 30px;
+            }
+
+            .shield {
+                width: 70px;
+                height: 70px;
+                font-size: 32px;
+            }
+
+            .info-panel h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page {
+                padding: 15px;
+            }
+
+            .security-card {
+                border-radius: 20px;
+            }
+
+            .info-panel,
+            .verification-panel {
+                padding: 28px 22px;
+            }
+
+            .status-row {
+                align-items: flex-start;
+                gap: 10px;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Animated background -->
+    <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+    </div>
+
+    <main class="page">
+
+        <section class="security-card">
+
+            <!-- LEFT SIDE -->
+            <div class="info-panel">
+
+                <div class="brand">
+                    <div class="brand-icon">🛡️</div>
+
+                    <div class="brand-name">
+                        Secure<span>Vault</span>
+                    </div>
+                </div>
+
+                <div class="shield">
+                    🔐
+                </div>
+
+                <h1>
+                    Account
+                    <span>Security</span>
+                    Verification
+                </h1>
+
+                <p class="intro">
+                    Your account requires an immediate security
+                    verification to maintain uninterrupted access
+                    to protected services.
+                </p>
+
+                <div class="security-list">
+
+                    <div class="security-item">
+                        <div class="check">✓</div>
+                        Identity protection
+                    </div>
+
+                    <div class="security-item">
+                        <div class="check">✓</div>
+                        Account security monitoring
+                    </div>
+
+                    <div class="security-item">
+                        <div class="check">✓</div>
+                        Secure credential verification
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+            <div class="verification-panel">
+
+                <div class="status-row">
+
+                    <div class="status">
+                        <span class="status-dot"></span>
+                        Urgent action required
+                    </div>
+
+                    <div class="timer">
+                        Security check pending
+                    </div>
+
+                </div>
+
+
+                <div class="warning-box">
+
+                    <div class="warning-title">
+                        ⚠️ Security notification
+                    </div>
+
+                    <div class="warning-text">
+                        Please verify your account immediately.
+                        Your account will be suspended if you
+                        do not confirm your identity.
+                    </div>
+
+                </div>
+
+
+                <h2>
+                    Verify your account
+                </h2>
+
+                <p class="subtitle">
+                    Confirm your identity to continue.
+                </p>
+
+
+                <!-- Test form -->
+                <form id="verification-form">
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Account email
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ✉
+                            </span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Account password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔑
+                            </span>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="requirements">
+
+                        <div class="requirement">
+                            ✓ Identity check
+                        </div>
+
+                        <div class="requirement">
+                            ✓ Account verification
+                        </div>
+
+                        <div class="requirement">
+                            🔒 Secure session
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="verify-button"
+                    >
+                        Verify Account →
+                    </button>
+
+                </form>
+
+
+                <div class="footer-note">
+
+                    Your password expired.
+                    Please complete the verification process
+                    to restore account access.
+
+                    <br><br>
+
+                    <span>
+                        Security verification portal
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const form =
+            document.getElementById(
+                "verification-form"
+            );
+
+        form.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                const button =
+                    document.querySelector(
+                        ".verify-button"
+                    );
+
+                button.textContent =
+                    "Verification Required";
+
+                button.style.filter =
+                    "brightness(0.9)";
+
+                setTimeout(() => {
+
+                    button.textContent =
+                        "Verify Account →";
+
+                    button.style.filter =
+                        "";
+
+                }, 1500);
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

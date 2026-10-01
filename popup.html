@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PhishGuard</title>
+
+    <link
+        rel="stylesheet"
+        href="popup.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+
+        <div class="header">
+
+            <div class="logo">
+                🛡️
+            </div>
+
+            <div>
+                <h1>PhishGuard</h1>
+
+                <p>
+                    Website Security Scanner
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Scan status -->
+
+        <div
+            id="scan-status"
+            class="scan-status"
+        >
+            Waiting for scan...
+        </div>
+
+
+        <!-- Risk card -->
+
+        <div
+            id="risk-card"
+            class="risk-card"
+        >
+
+            <div
+                id="risk-level"
+                class="risk-level"
+            >
+                —
+            </div>
+
+            <div
+                id="risk-score"
+                class="risk-score"
+            >
+                — / 100
+            </div>
+
+        </div>
+
+
+        <!-- Current page -->
+
+        <div class="section">
+
+            <h2>Current page</h2>
+
+            <div
+                id="current-url"
+                class="current-url"
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <!-- Reasons -->
+
+        <div class="section">
+
+            <h2>
+                Why PhishGuard flagged this page
+            </h2>
+
+            <ul
+                id="risk-reasons"
+                class="risk-reasons"
+            >
+                <li>
+                    No scan result available.
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- Statistics -->
+
+        <div class="section">
+
+            <h2>
+                Scan statistics
+            </h2>
+
+            <div class="statistics">
+
+                <div class="stat">
+
+                    <div
+                        id="total-scans"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        Total scans
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div
+                        id="high-risk-scans"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        High risk
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div
+                        id="critical-scans"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        Critical
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Actions -->
+
+        <div class="actions">
+
+            <button
+                id="rescan-button"
+                class="rescan-button"
+            >
+                🔄 Rescan Page
+            </button>
+
+        </div>
+
+
+        <!-- Footer -->
+
+        <div class="footer">
+
+            PhishGuard v1.0.0
+
+        </div>
+
+    </div>
+
+    <script src="popup.js"></script>
+
+</body>
+
+</html>
