@@ -380,7 +380,7 @@ PhishGuard demonstrates practical application of:
 
 ## Author
 
-**Sandra S**
+**Sandra Santhosh Kumar**
 
 B.Tech Computer Science Engineering (Cyber Security)
 
